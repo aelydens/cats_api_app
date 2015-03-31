@@ -1,0 +1,20 @@
+All Cats
+%hr
+
+%table
+  %thead
+    %th Name
+    %th Softness Level
+    %th Age
+
+- @cats.each do |cat|
+  %tr
+    %td= link_to cat.name, cat_path(cat)
+    %td= cat.softness
+    %td= cat.age
+    = link_to "Edit #{cat.name}", edit_cat_path(cat)
+    = link_to "Delete #{cat.name}", cat_path(cat), method: :delete, data: { confirm: "Are you really really sure?"}
+
+%hr
+
+= link_to "New Cat", new_cat_path
