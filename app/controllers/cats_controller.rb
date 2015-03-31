@@ -1,6 +1,11 @@
 class CatsController < ApplicationController
   def index
     @cats = Cat.all
+    respond_to do |format|
+      format.html
+      format.xml { render :xml => @cats }
+      format.json { render :json => @cats } #will call to_json on the value, making ruby object JSON string(s)
+    end
   end
 
   def new
